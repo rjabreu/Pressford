@@ -13,5 +13,6 @@ namespace Pressford.Web.Models
         public Author Author { get; set; }
         public DateTime PublishedDate { get; set; }
         public List<Comment> Comments {get; set;}
+        public int Likes { get; set; }
     }
 }
