@@ -1,6 +1,6 @@
 ﻿using Pressford.Web.DatabaseContext;
 using Pressford.Web.Models;
-using Pressford.Web.ViewModes;
+using Pressford.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +29,18 @@ namespace Pressford.Web.Controllers
             return View();
         }
 
+        public ActionResult ArticleDetail(int articleId)
+        {
+            var db = new ArticlesDb();
+            var article = db.Articles.Where(x => x.Id == articleId).FirstOrDefault();
+            ArticleDetailPageViewModel viewModel = new ArticleDetailPageViewModel
+            {
+                Article = article
+            };
+
+            return View(viewModel);
+        }
+
 
         private List<Article> GetAllArticles()
         {
@@ -44,10 +56,10 @@ namespace Pressford.Web.Controllers
             return db.Articles.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        private ActionResult CreateArticle(Article article)
+        public ActionResult CreateArticle(Article article)
         {
             var db = new ArticlesDb();
-
+            article.PublishedDate = DateTime.Now;
             db.Articles.Add(article);
             db.SaveChanges();
 

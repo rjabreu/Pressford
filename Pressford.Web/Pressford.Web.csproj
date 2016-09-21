@@ -183,7 +183,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModes\ArticlePageViewModel.cs" />
+    <Compile Include="ViewModels\ArticleDetailPageViewModel.cs" />
+    <Compile Include="ViewModels\ArticlePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-yeti.min.css" />
@@ -191,6 +192,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="css\main.css" />
+    <Content Include="Images\Team_CG07USA_Reunion.jpg" />
+    <Content Include="Images\Team_CG08.jpg" />
+    <Content Include="Images\Team_CG09.jpg" />
+    <Content Include="Images\Team_CG09_Ninjas.jpg" />
+    <Content Include="Images\Team_CG10.jpg" />
+    <Content Include="Images\Team_CG11.jpg" />
+    <Content Include="Images\Team_CG11_Bobblehead.jpg" />
+    <Content Include="Images\Team_CG11_World.jpg" />
+    <Content Include="Images\Team_CG12.jpg" />
+    <Content Include="Images\Team_CG13.jpg" />
+    <Content Include="Images\Team_CG14.jpg" />
+    <Content Include="Images\Team_CG15.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -242,6 +255,7 @@
     <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Articles\Create.cshtml" />
     <Content Include="Views\Articles\CreateArticleFormPartial.cshtml" />
+    <Content Include="Views\Articles\ArticleDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

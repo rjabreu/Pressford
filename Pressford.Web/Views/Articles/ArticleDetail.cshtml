@@ -1,0 +1,28 @@
+﻿@model Pressford.Web.ViewModels.ArticleDetailPageViewModel
+
+@{
+    ViewBag.Title = "ArticleDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="article">
+            <h2>@Model.Article.Title</h2>
+            <div class="article-content">
+                <p>@Model.Article.Content</p>
+            </div>
+          
+            <div class="article-details">
+                <span class="article-likes">11 <span class="glyphicon glyphicon-thumbs-up"></span></span>
+                <span class="article-date">Published on <b>11 September 2011</b></span>
+                <span class="article-author">by Ricardo</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
