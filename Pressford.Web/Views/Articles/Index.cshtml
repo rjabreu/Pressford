@@ -1,27 +1,64 @@
-﻿@model Pressford.Web.ViewModes.ArticlePageViewModel
+﻿@model Pressford.Web.ViewModels.ArticlePageViewModel
 @{
     ViewBag.Title = "Index";
-    
+
 }
 
 
 
 
-    <h2>@Model.Title</h2>
-    @{
-        if (Model.Articles.Any())
-        {
-            <ul>
-                @foreach (var article in Model.Articles)
+<h2>@Model.Title</h2>
+<div class="row">
+    <div class="col-md-12">
+        @{
+            if (Model.Articles.Any())
+            {
+
+                foreach (var article in Model.Articles)
                 {
+                    <div class="col-md-4">
+                        <div class="article-card">
+                            <a href="/">
+                                <div class="article-card-header" style="background-image:url('/Images/Team_CG07USA_Reunion.jpg'); background-size:cover">
+                                    <div class="like-button-container">
+                                        <span class="like-button glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span>11</span>
+                                    </div>
+                                </div>
+                            </a>
+                          
+                            <div class="article-card-content">
 
+                                <h3 class="article-title">@Html.ActionLink(article.Title,"ArticleDetail",new { ArticleId = article.Id })</h3>
+                                <time datetime="@(article.PublishedDate != null ? article.PublishedDate.ToString("dd-MM-yyyy") : "")">
+                                    @(article.PublishedDate != null ? article.PublishedDate.ToString("dd MMM yyyy") : "")
+                                </time>
+                                @if (!string.IsNullOrEmpty(article.Content))
+                                {
+
+                                    <p>@article.Content</p>
+                                }
+                            </div>
+                            @if (article.Author != null)
+                            {
+                                <span class="article-author">@article.Author.Name</span>
+                            }
+                            else
+                            {
+                                <span class="article-author">Ricardo</span>
+                            }
+
+                        </div>
+                    </div>
                 }
-            </ul>
 
+
+            }
+            else
+            {
+                <h3>There are no articles available at the moment.</h3>
+            }
         }
-    }
-
-   
 
 
-
+    </div>
+</div>

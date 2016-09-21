@@ -7,7 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    margin-top:80px;
+    margin-top: 80px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -23,3 +23,83 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.article-card {
+    height: 360px;
+    border: 1px solid grey;
+    margin-bottom:1em;
+    position:relative;
+}
+
+
+.article-card .article-card-header {
+    height: 150px;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.article-card .article-card-content {
+    padding: 2em;
+}
+
+.like-button-container {
+    padding: 1em;
+    position: absolute;
+    color: white;
+    bottom: -10px;
+    left: 1em;
+    border-radius: 50%;
+    background-color: rgba(0, 113, 150,0.6);
+    width: 4em;
+    height: 4em;
+    text-align: center;
+}
+
+
+.article-title {
+    margin-top: 5em;
+    margin-bottom: 0.5em;
+}
+
+.article-card-content p {
+    margin-top: 1em;
+}
+
+.article-card-content time{
+    color:grey;
+}
+
+.article-author {
+    position: absolute;
+    bottom: 1em;
+    right: 2em;
+    color: grey;
+    font-weight: bold;
+}
+
+.article-card-content h3 a {
+    text-decoration: none;
+}
+
+.article-details {
+    margin-bottom: 2em;
+}
+
+.article-details .article-likes {
+    float: left;
+    font-weight: bold;
+    margin-right: 8em;
+}
+
+.article-details .article-author {
+    float: right;
+    position: initial;
+}
+
+.article-content {
+    margin: 3em 0 3em;
+}
+
+
+
