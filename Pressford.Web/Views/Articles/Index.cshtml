@@ -1,0 +1,27 @@
+﻿@model Pressford.Web.ViewModes.ArticlePageViewModel
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+
+
+
+    <h2>@Model.Title</h2>
+    @{
+        if (Model.Articles.Any())
+        {
+            <ul>
+                @foreach (var article in Model.Articles)
+                {
+
+                }
+            </ul>
+
+        }
+    }
+
+   
+
+
+

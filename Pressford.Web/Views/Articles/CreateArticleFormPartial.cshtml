@@ -1,0 +1,25 @@
+﻿@model Pressford.Web.Models.Article
+
+@{ 
+    using (Html.BeginForm("CreateArticle", "Articles"))
+    {
+        if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+
+            Model.Author.Name = HttpContext.Current.User.Identity.Name;
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.Content)
+            @Html.TextAreaFor(m => m.Title, new { @class = "form-control" })
+           
+        </div>
+        <div class="form-group text-right">
+            <button type="submit" value="Publish" class="btn btn-primary ">Publish</button>
+        </div>
+
+    }
+}

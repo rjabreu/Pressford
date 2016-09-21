@@ -23,9 +23,9 @@ namespace Pressford.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/css/bootsrap").Include(
+                      "~/bootstrap-yeti.min.css",
+                      "~/main.css"));
         }
     }
 }
