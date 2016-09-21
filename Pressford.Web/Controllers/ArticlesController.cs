@@ -11,7 +11,7 @@ namespace Pressford.Web.Controllers
 {
     public class ArticlesController : Controller
     {
-        // GET: CreateArticle
+       
         public ActionResult Index()
         {
             var viewModel = new ArticlePageViewModel
@@ -78,15 +78,30 @@ namespace Pressford.Web.Controllers
 
         }
 
-        public void DeleteArticle(int id)
+        public ActionResult DeleteArticle(int id)
         {         
             var db = new ArticlesDb();
 
-            db.Articles.Remove(db.Articles.Find(id));
+            var article = db.Articles.Find(id);
+            if (article != null)
+            {
+
+                db.Articles.Remove(article);
+
+            }else
+            {
+                Response.StatusCode = 404;
+                return Content("Article not found.") ;
+            }
+
+            TempData["success"] = "Article deleted successfully";
             db.SaveChanges();
+
+            
+            return RedirectToAction("Index");
         }
 
-        public void UpdateArticle(Article updatedArticle)
+        public ActionResult UpdateArticle(Article updatedArticle)
         {
             var db = new ArticlesDb();
 
@@ -96,7 +111,11 @@ namespace Pressford.Web.Controllers
                 storedArticle.Content = updatedArticle.Content;
                 storedArticle.Title = storedArticle.Title;
                 db.SaveChanges();
+                TempData["success"] = "Article updated";
+                return RedirectToAction("Index");
             }
+            Response.StatusCode = 404;
+            return Content("Article not found");
         }
     }
 }
