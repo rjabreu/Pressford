@@ -14,5 +14,6 @@ namespace Pressford.Web.Models
         public DateTime PublishedDate { get; set; }
         public List<Comment> Comments {get; set;}
         public int Likes { get; set; }
+        
     }
 }

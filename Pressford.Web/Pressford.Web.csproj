@@ -256,6 +256,8 @@
     <Content Include="Views\Articles\Create.cshtml" />
     <Content Include="Views\Articles\CreateArticleFormPartial.cshtml" />
     <Content Include="Views\Articles\ArticleDetail.cshtml" />
+    <Content Include="Views\Articles\EditArticle.cshtml" />
+    <Content Include="Views\Articles\EditArticleFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

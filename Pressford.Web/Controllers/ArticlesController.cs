@@ -41,6 +41,17 @@ namespace Pressford.Web.Controllers
             return View(viewModel);
         }
 
+        public ActionResult EditArticle(int articleId)
+        {
+            var db = new ArticlesDb();
+            var article = db.Articles.Where(x => x.Id == articleId).FirstOrDefault();
+            ArticleDetailPageViewModel viewModel = new ArticleDetailPageViewModel
+            {
+                Article = article
+            };
+
+            return View(viewModel);
+        }
 
         private List<Article> GetAllArticles()
         {

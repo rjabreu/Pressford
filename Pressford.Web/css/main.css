@@ -101,5 +101,11 @@ textarea {
     margin: 3em 0 3em;
 }
 
+span.glyphicon.glyphicon-pencil.edit-article {
+    position: absolute;
+    top: -2em;
+    right: 1em;
+}
+
 
 

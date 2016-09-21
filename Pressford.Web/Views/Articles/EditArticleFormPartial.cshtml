@@ -1,0 +1,32 @@
+﻿@model Pressford.Web.Models.Article
+@using Pressford.Web.Models
+@{
+    using (Html.BeginForm("UpdateArticle", "Articles"))
+    {
+        Model.Author = new Author();
+
+        if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+
+            Model.Author.Name = HttpContext.Current.User.Identity.Name;
+        }
+        else
+        {
+            Model.Author.Name = "Ricardo"; //this is when testing and not logged in
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.Content)
+            @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+
+        </div>
+        <div class="form-group text-right">
+            <button type="submit" value="Publish" class="btn btn-primary ">Publish</button>
+        </div>
+
+    }
+}
+

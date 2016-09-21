@@ -15,7 +15,7 @@
             </div>
           
             <div class="article-details">
-                <span class="article-likes">11 <span class="glyphicon glyphicon-thumbs-up"></span></span>
+                <span class="article-likes">@(Model.Article.Likes > 0 ? Model.Article.Likes ) <span class="glyphicon glyphicon-thumbs-up"></span></span>
                 <span class="article-date">Published on <b>@Model.Article.PublishedDate.ToString("dd MMM yyyy")</b></span>
                 <span class="article-author">by @Model.Article.Author.Name</span>
             </div>

@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     int maxLength = 150;
+    char[] stopChars = { '.', '!' };
 }
 
 
@@ -18,17 +19,22 @@
                 {
                     <div class="col-md-4">
                         <div class="article-card">
-                            <a href="/">
-                                <div class="article-card-header" style="background-image:url('/Images/Team_CG07USA_Reunion.jpg'); background-size:cover">
+                            
+                            <div class="article-card-header" style="background-image:url('/Images/Team_CG07USA_Reunion.jpg'); background-size:cover">
+                                @if (article.Likes > 0)
+                                {
                                     <div class="like-button-container">
-                                        <span class="like-button glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span>11</span>
+
+
+                                        <span class="like-button glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span>@article.Likes</span>
                                     </div>
-                                </div>
-                            </a>
+                                }
+                                <span class="glyphicon glyphicon-pencil edit-article">@Html.ActionLink("Edit", "EditArticle", new { articleId = article.Id })</span>
+                            </div>
 
                             <div class="article-card-content">
 
-                                <h3 class="article-title">@Html.ActionLink(article.Title, "ArticleDetail", new { ArticleId = article.Id })</h3>
+                                <h3 class="article-title">@Html.ActionLink(article.Title, "ArticleDetail", new { articleId = article.Id })</h3>
                                 <time datetime="@(article.PublishedDate != null ? article.PublishedDate.ToString("dd-MM-yyyy") : "")">
                                     @(article.PublishedDate != null ? article.PublishedDate.ToString("dd MMM yyyy") : "")
                                 </time>
@@ -38,7 +44,8 @@
 
                                     if (content.Length > maxLength)
                                     {
-                                        content = content.Substring(0,content.IndexOf('.')) + "...";
+
+                                        content = content.Substring(0, content.IndexOfAny(stopChars)) + "...";
                                     }
                                     <p>@content</p>
                                 }
