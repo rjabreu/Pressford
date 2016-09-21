@@ -78,7 +78,7 @@ namespace Pressford.Web.Controllers
 
         }
 
-        private void DeleteArticle(int id)
+        public void DeleteArticle(int id)
         {         
             var db = new ArticlesDb();
 
@@ -86,14 +86,15 @@ namespace Pressford.Web.Controllers
             db.SaveChanges();
         }
 
-        private void UpdateArticle(Article updatedArticle)
+        public void UpdateArticle(Article updatedArticle)
         {
             var db = new ArticlesDb();
 
-            var storedArticle = db.Articles.SingleOrDefault(b => b.Id == updatedArticle.Id);
+            var storedArticle = db.Articles.Find(updatedArticle.Id);
             if (storedArticle != null)
             {
-                storedArticle = updatedArticle;
+                storedArticle.Content = updatedArticle.Content;
+                storedArticle.Title = storedArticle.Title;
                 db.SaveChanges();
             }
         }

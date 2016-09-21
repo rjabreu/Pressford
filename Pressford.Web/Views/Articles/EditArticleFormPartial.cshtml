@@ -21,10 +21,11 @@
 
             @Html.LabelFor(m => m.Content)
             @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
-
+            @Html.HiddenFor(m => m.Id)
         </div>
         <div class="form-group text-right">
-            <button type="submit" value="Publish" class="btn btn-primary ">Publish</button>
+            <button type="submit" class="btn btn-primary ">Update</button>
+            @Html.ActionLink("Delete", "DeleteArticle", new { id = Model.Id }, new { @class = "btn btn-danger" })
         </div>
 
     }
