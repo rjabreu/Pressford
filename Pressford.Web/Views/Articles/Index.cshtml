@@ -1,7 +1,7 @@
 ﻿@model Pressford.Web.ViewModels.ArticlePageViewModel
 @{
     ViewBag.Title = "Index";
-
+    int maxLength = 150;
 }
 
 
@@ -25,17 +25,22 @@
                                     </div>
                                 </div>
                             </a>
-                          
+
                             <div class="article-card-content">
 
-                                <h3 class="article-title">@Html.ActionLink(article.Title,"ArticleDetail",new { ArticleId = article.Id })</h3>
+                                <h3 class="article-title">@Html.ActionLink(article.Title, "ArticleDetail", new { ArticleId = article.Id })</h3>
                                 <time datetime="@(article.PublishedDate != null ? article.PublishedDate.ToString("dd-MM-yyyy") : "")">
                                     @(article.PublishedDate != null ? article.PublishedDate.ToString("dd MMM yyyy") : "")
                                 </time>
                                 @if (!string.IsNullOrEmpty(article.Content))
                                 {
+                                    var content = article.Content;
 
-                                    <p>@article.Content</p>
+                                    if (content.Length > maxLength)
+                                    {
+                                        content = content.Substring(0,content.IndexOf('.')) + "...";
+                                    }
+                                    <p>@content</p>
                                 }
                             </div>
                             @if (article.Author != null)
