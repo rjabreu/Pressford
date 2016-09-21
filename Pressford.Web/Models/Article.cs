@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Pressford.Web.Models
@@ -10,6 +11,7 @@ namespace Pressford.Web.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public Author Author { get; set; }
+        public DateTime PublishedDate { get; set; }
         public List<Comment> Comments {get; set;}
     }
 }
