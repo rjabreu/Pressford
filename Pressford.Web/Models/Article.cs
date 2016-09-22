@@ -10,7 +10,7 @@ namespace Pressford.Web.Models
         [Required]
         public string Title { get; set; }
         public string Content { get; set; }
-        public Author Author { get; set; }
+        public string Author { get; set; }
         public DateTime PublishedDate { get; set; }
         public List<Comment> Comments {get; set;}
         public int Likes { get; set; }

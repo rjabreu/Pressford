@@ -27,7 +27,7 @@ textarea {
 .article-card {
     height: 360px;
     border: 1px solid grey;
-    margin-bottom:1em;
+    margin-bottom:2em;
     position:relative;
 }
 
@@ -101,10 +101,14 @@ textarea {
     margin: 3em 0 3em;
 }
 
-span.glyphicon.glyphicon-pencil.edit-article {
+.edit-article {
     position: absolute;
     top: -2em;
     right: 1em;
+}
+
+.article-list {
+    margin-top: 4em;
 }
 
 

@@ -3,18 +3,7 @@
 @{
     using (Html.BeginForm("UpdateArticle", "Articles"))
     {
-        Model.Author = new Author();
-
-        if (HttpContext.Current.User.Identity.IsAuthenticated)
-        {
-
-            Model.Author.Name = HttpContext.Current.User.Identity.Name;
-        }
-        else
-        {
-            Model.Author.Name = "Ricardo"; //this is when testing and not logged in
-        }
-
+       
         <div class="form-group">
             @Html.LabelFor(m => m.Title)
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })

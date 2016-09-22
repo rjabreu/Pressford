@@ -11,6 +11,25 @@
 <h2>@Model.Title</h2>
 <div class="row">
     <div class="col-md-12">
+        @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @TempData["success"]
+            </div>
+
+        }
+        else if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @TempData["error"]
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 article-list">
         @{
             if (Model.Articles.Any())
             {
@@ -19,7 +38,7 @@
                 {
                     <div class="col-md-4">
                         <div class="article-card">
-                            
+
                             <div class="article-card-header" style="background-image:url('/Images/Team_CG07USA_Reunion.jpg'); background-size:cover">
                                 @if (article.Likes > 0)
                                 {
@@ -50,14 +69,10 @@
                                     <p>@content</p>
                                 }
                             </div>
-                            @if (article.Author != null)
-                            {
-                                <span class="article-author">@article.Author.Name</span>
-                            }
-                            else
-                            {
-                                <span class="article-author">Ricardo</span>
-                            }
+
+                            <span class="article-author">@article.Author</span>
+
+
 
                         </div>
                     </div>

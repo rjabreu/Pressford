@@ -30,9 +30,9 @@ namespace Pressford.Web.Controllers
         }
 
         public ActionResult ArticleDetail(int articleId)
-        {
-            var db = new ArticlesDb();
-            var article = db.Articles.Where(x => x.Id == articleId).FirstOrDefault();
+        { 
+            var article = GetArticleById(articleId);
+
             ArticleDetailPageViewModel viewModel = new ArticleDetailPageViewModel
             {
                 Article = article
@@ -64,23 +64,39 @@ namespace Pressford.Web.Controllers
         {
             var db = new ArticlesDb();
 
-            return db.Articles.Where(x => x.Id == id).FirstOrDefault();
+            return db.Articles.Find(id);
         }
 
         public ActionResult CreateArticle(Article article)
         {
+          
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+
+                article.Author = HttpContext.User.Identity.Name;
+            }
+            else
+            {
+                article.Author = "Ricardo"; //this is when testing and not logged in
+            }
+            
+
+
             var db = new ArticlesDb();
             article.PublishedDate = DateTime.Now;
             db.Articles.Add(article);
             db.SaveChanges();
-
-            return Content("new item creted");
+            TempData["success"] = "Article created successfully";
+            return RedirectToAction("Index");
 
         }
 
         public ActionResult DeleteArticle(int id)
         {         
             var db = new ArticlesDb();
+
+            
 
             var article = db.Articles.Find(id);
             if (article != null)
@@ -105,7 +121,7 @@ namespace Pressford.Web.Controllers
         {
             var db = new ArticlesDb();
 
-            var storedArticle = db.Articles.Find(updatedArticle.Id);
+            var storedArticle = GetArticleById(updatedArticle.Id);
             if (storedArticle != null)
             {
                 storedArticle.Content = updatedArticle.Content;

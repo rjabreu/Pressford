@@ -1,19 +1,14 @@
 ﻿@model Pressford.Web.Models.Article
 @using Pressford.Web.Models
 @{ 
+
+
+
     using (Html.BeginForm("CreateArticle", "Articles"))
     {
-        Model.Author = new Author();
-        
-        if (HttpContext.Current.User.Identity.IsAuthenticated)
-        {
 
-            Model.Author.Name = HttpContext.Current.User.Identity.Name;
-        }
-        else
-        {
-            Model.Author.Name = "Ricardo"; //this is when testing and not logged in
-        }
+
+
 
         <div class="form-group">
             @Html.LabelFor(m => m.Title)
@@ -21,6 +16,7 @@
 
             @Html.LabelFor(m => m.Content)
             @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+         
            
         </div>
         <div class="form-group text-right">
