@@ -10,12 +10,12 @@
 
 
 
-        <div class="form-group">
+        <div class="form-group span-6">
             @Html.LabelFor(m => m.Title)
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
 
             @Html.LabelFor(m => m.Content)
-            @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", col = "50", rows = "10", style = "min-width: 100%" })
          
            
         </div>

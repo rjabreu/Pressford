@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pressford.Web.DatabaseContext;
+using Pressford.Web.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,12 @@ namespace Pressford.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            HomePageViewModel vm = new HomePageViewModel
+            {
+                Articles = new ArticlesDb().Articles.OrderByDescending(x => x.PublishedDate).Take(3).ToList()
+            };
+
+            return View(vm);
         }
 
         public ActionResult About()

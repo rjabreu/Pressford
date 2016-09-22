@@ -185,6 +185,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ArticleDetailPageViewModel.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
+    <Compile Include="ViewModels\HomePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-yeti.min.css" />
