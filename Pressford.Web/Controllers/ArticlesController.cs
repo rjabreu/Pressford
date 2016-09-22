@@ -133,5 +133,22 @@ namespace Pressford.Web.Controllers
             Response.StatusCode = 404;
             return Content("Article not found");
         }
+
+        public PartialViewResult AddLike(int id)
+        {
+            var db = new ArticlesDb();
+            
+            var article = db.Articles.Find(id);
+            if (article != null)
+            {
+                article.Likes = +1;
+
+            }
+
+
+            return PartialView("~/Views/Articles/Partials/LikesCount.cshtml", article);
+
+        }
     }
 }
+
