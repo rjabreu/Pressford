@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Pressford.Web.Controllers
 {
+    [Authorize]
     public class ArticlesController : Controller
     {
-       
+        [Authorize(Roles = "Employee, Admin")]
         public ActionResult Index()
         {
             var viewModel = new ArticlePageViewModel
@@ -29,6 +31,7 @@ namespace Pressford.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Employee, Admin")]
         public ActionResult ArticleDetail(int articleId)
         { 
             var article = GetArticleById(articleId);
@@ -85,6 +88,7 @@ namespace Pressford.Web.Controllers
 
             var db = new ArticlesDb();
             article.PublishedDate = DateTime.Now;
+            article.Likes = new List<Like>();
             db.Articles.Add(article);
             db.SaveChanges();
             TempData["success"] = "Article created successfully";
@@ -134,16 +138,43 @@ namespace Pressford.Web.Controllers
             return Content("Article not found");
         }
 
+        [Authorize(Roles = "Employee, Admin")]
         public PartialViewResult AddLike(int id)
         {
             var db = new ArticlesDb();
             
             var article = db.Articles.Find(id);
-            if (article != null)
+            var like = article.Likes.Where(x => x.LikeAuthor.Name == HttpContext.User.Identity.Name).FirstOrDefault();
+            //user already liked this so remove like
+            if (like != null)
             {
-                article.Likes = +1;
+                if (article != null)
+                {
+                    var author = new Author();
+                    author.Name = HttpContext.User.Identity.Name;
+                    article.Likes.Remove(like);
+                    db.SaveChanges();
 
+                }
+            }else
+            {
+                if (article != null)
+                {
+                    var author = new Author();
+                    author.Name = HttpContext.User.Identity.Name;
+                    article.Likes.Add(new Like
+                    {
+                        LikeAuthor = author,
+
+
+                    });
+
+                    db.SaveChanges();
+
+                }
             }
+
+          
 
 
             return PartialView("~/Views/Articles/Partials/LikesCount.cshtml", article);

@@ -15,19 +15,21 @@
             </div>
 
             <div class="article-details">
+
                 <span class="article-likes" id="likes">
-                    @(Model.Article.Likes > 0 ? Model.Article.Likes : 0)
+                    @( Model.Article.Likes.Count > 0 ? Model.Article.Likes.Count : 0)
 
                     <span class="glyphicon glyphicon-thumbs-up">
+                        <span id="likes"></span>
                         @Ajax.ActionLink("Like", "AddLike",
-                                                                        new { id = Model.Article.Id },
+                                new { id = Model.Article.Id },
 
-                                                                        new AjaxOptions
-                                                                        {
-                                                                            UpdateTargetId = "likes",
-                                                                            InsertionMode = InsertionMode.Replace,
-                                                                            HttpMethod = "GET"
-                                                                        })
+                                new AjaxOptions
+                                {
+                                    UpdateTargetId = "likes",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "GET"
+                                })
                     </span>
                 </span>
                 <span class="article-date">Published on <b>@Model.Article.PublishedDate.ToString("dd MMM yyyy")</b></span>

@@ -1,16 +1,17 @@
 ﻿@model Pressford.Web.Models.Article
 
-<span class="article-likes" id="likes">
-    @(Model.Likes > 0 ? Model.Likes : 0)
+<span class="article-likes" >
+    @(Model.Likes.Count > 0 ? Model.Likes.Count : 0)
 
     <span class="glyphicon glyphicon-thumbs-up">
+        <span id="likes"></span>
     @Ajax.ActionLink("Like", "AddLike",
         new { id = Model.Id },
 
         new AjaxOptions
         {
             UpdateTargetId = "likes",
-            InsertionMode = InsertionMode.ReplaceWith,
+            InsertionMode = InsertionMode.Replace,
             HttpMethod = "GET"
         })
     </span>

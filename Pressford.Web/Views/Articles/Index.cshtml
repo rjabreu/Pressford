@@ -42,16 +42,16 @@
                         <div class="article-card">
 
                             <div class="article-card-header" style="background-image:url('/Images/Team_CG07USA_Reunion.jpg'); background-size:cover">
-                                @if (article.Likes > 0)
+                                @*@if (article.Likes > 0)
                                 {
                                     <div class="like-button-container">
 
 
                                         <span class="like-button glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span>@article.Likes</span>
                                     </div>
-                                }
+                                }*@
 
-                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                 {
                                     <span class="glyphicon glyphicon-pencil edit-article">@Html.ActionLink("Edit", "EditArticle", new { articleId = article.Id })</span>
                                 }

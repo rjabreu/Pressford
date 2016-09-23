@@ -13,7 +13,7 @@ namespace Pressford.Web.Models
         public string Author { get; set; }
         public DateTime PublishedDate { get; set; }
         public List<Comment> Comments {get; set;}
-        public int Likes { get; set; }
+        public List<Like> Likes { get; set; }
         
     }
 }

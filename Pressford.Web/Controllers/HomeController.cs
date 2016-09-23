@@ -29,7 +29,7 @@ namespace Pressford.Web.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Feel free to reach us anytime.";
 
             return View();
         }
