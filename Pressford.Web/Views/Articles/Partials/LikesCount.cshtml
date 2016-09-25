@@ -1,7 +1,7 @@
 ﻿@model Pressford.Web.Models.Article
 
 <span class="article-likes" >
-    @(Model.Likes.Count > 0 ? Model.Likes.Count : 0)
+    @(Model.Likes > 0 ? Model.Likes : 0)
 
     <span class="glyphicon glyphicon-thumbs-up">
         <span id="likes"></span>

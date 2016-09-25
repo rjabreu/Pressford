@@ -1,0 +1,22 @@
+﻿@model List<Pressford.Web.Models.Comment>
+
+<div class="article-comments">
+@{
+
+    if (Model != null && Model.Any())
+    {
+        <ul>
+            @foreach (var comment in Model)
+            {
+                <li>
+                    <p>@comment.Content</p>
+                    <br />
+                    <span class="comment-user-name">by <strong>@comment.UserName</strong></span>
+                    <hr />
+                </li>
+            }
+        </ul>
+    }
+}
+</div>
+

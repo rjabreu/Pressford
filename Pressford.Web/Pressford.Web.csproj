@@ -171,6 +171,8 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DatabaseContext\CommentsDb.cs" />
+    <Compile Include="DatabaseContext\LikesDb.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -263,6 +265,8 @@
     <Content Include="Views\Articles\EditArticle.cshtml" />
     <Content Include="Views\Articles\EditArticleFormPartial.cshtml" />
     <Content Include="Views\Articles\Partials\LikesCount.cshtml" />
+    <Content Include="Views\Articles\Partials\NewCommentPartial.cshtml" />
+    <Content Include="Views\Articles\Partials\ArticleCommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,5 @@
 ﻿@model Pressford.Web.ViewModels.ArticleDetailPageViewModel
-
+@using Pressford.Web.Models
 @{
     ViewBag.Title = "ArticleDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,9 +15,9 @@
             </div>
 
             <div class="article-details">
-
+              
                 <span class="article-likes" id="likes">
-                    @( Model.Article.Likes.Count > 0 ? Model.Article.Likes.Count : 0)
+                    @Model.Article.Likes
 
                     <span class="glyphicon glyphicon-thumbs-up">
                         <span id="likes"></span>
@@ -35,6 +35,9 @@
                 <span class="article-date">Published on <b>@Model.Article.PublishedDate.ToString("dd MMM yyyy")</b></span>
                 <span class="article-author">by @Model.Article.Author</span>
             </div>
+             
+            @Html.Action("RenderComments", "Articles", new { id = Model.Article.Id })
+            @Html.Partial("~/Views/Articles/Partials/NewCommentPartial.cshtml", new Comment { ArticleId = Model.Article.Id })
         </div>
     </div>
 </div>

@@ -111,5 +111,12 @@ textarea {
     margin-top: 4em;
 }
 
+.article-comments ul {
+    list-style: none;
+}
+
+.article-comments .comment-user-name {
+    font-size: 0.8em;
+}
 
 
